@@ -8,6 +8,31 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 100
 #define MOUSE 6
 
+// OS設定を日本語キーボードのまま使用するための変換定義
+#define JP_DQUOTE       AT                // "
+#define JP_AMPERSAND    CARET             // &
+#define JP_QUOTE        AMPERSAND         // '
+#define JP_EQUAL        UNDER             // =
+#define JP_CARET        EQUAL             // ^
+#define JP_YEN          0x89              // ¥
+#define JP_PLUS         COLON             // +
+#define JP_TILDE        PLUS              // ~
+#define JP_PIPE         LS(0x89)          // |
+#define JP_AT           LEFT_BRACKET      // @
+#define JP_COLON        SINGLE_QUOTE      // :
+#define JP_ASTERISK     DOUBLE_QUOTES     // *
+#define JP_BACKQUOTE    LEFT_BRACE        // `
+#define JP_UNDERSCORE   LS(0x87)          // _
+#define JP_LBRACKET     RIGHT_BRACKET     // [
+#define JP_RBRACKET     BACKSLASH         // ]
+#define JP_LPAREN       ASTERISK          // (
+#define JP_RPAREN       LEFT_PARENTHESIS  // )
+#define JP_LBRACE       RIGHT_BRACE       // {
+#define JP_RBRACE       PIPE              // }
+#define JP_KANA         LANGUAGE_1        // かな
+#define JP_EISU         LANGUAGE_2        // 英数
+#define JP_HANZEN       GRAVE             // 半角/全角
+
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
@@ -82,6 +107,7 @@
     keymap {
         compatible = "zmk,keymap";
 
+        //layer_0
         Mac-Default_Layer {
             bindings = <
 &kp Q             &kp W         &kp E  &kp R  &kp T          &kp Y                        &kp U          &kp I        &kp O        &kp P
@@ -95,12 +121,13 @@
                 <&mouse_scroll SCRL_UP SCRL_DOWN>;
         };
 
+        //layer_1
         Win-Default_Layer {
             bindings = <
-&kp Q             &kp W         &kp E  &kp R  &kp T          &kp Y                        &kp U          &kp I        &kp O      &kp P
-&kp A             &kp S         &kp D  &kp F  &kp G          &kp H                        &kp J          &kp K        &kp L      &kp MINUS
-&mt LEFT_SHIFT Z  &kp X         &kp C  &kp V  &kp B          &kp LANGUAGE_2               &kp AT_SIGN    &kp N        &kp M      &kp COMMA     &kp PERIOD        &mt RIGHT_SHIFT SLASH
-&kp LCTRL         &kp LEFT_GUI                &lt 3 SPACE    &lt_to_layer_0 7 LANGUAGE_1  &kp BACKSPACE  &lt 5 ENTER  &kp SPACE  &kp LEFT_ALT  &lt 8 LEFT_SHIFT  &kp DEL
+&mt LCTRL Q       &kp W         &kp E  &kp R  &kp T                                                      &kp Y            &kp U      &kp I         &kp O             &kp P
+&kp A             &kp S         &kp D  &kp F  &kp G                                                      &kp H            &kp J      &kp K         &kp L             &kp ENTER
+&mt LEFT_SHIFT Z  &kp X         &kp C  &kp V  &kp B          &kp LANGUAGE_2               &mo 8          &kp N            &kp M      &kp COMMA     &kp PERIOD        &mt RIGHT_SHIFT SLASH
+&kp LEFT_SHIFT    &kp LEFT_GUI                &lt 3 SPACE    &kp JP_HANZEN                &mo 3          &kp BACKSPACE    &mo 7      &kp LEFT_ALT  &lt 8 LEFT_SHIFT  &kp DEL
             >;
 
             sensor-bindings =
@@ -108,6 +135,7 @@
                 <&mouse_scroll SCRL_UP SCRL_DOWN>;
         };
 
+        //layer_2
         Mac-Function_Layer {
             bindings = <
 &kp LG(A)       &kp LG(X)     &kp LG(C)    &kp LG(V)  &kp LG(F)    &kp LESS_THAN         &kp GREATER_THAN       &kp CARET         &kp PERCENT        &kp DOLLAR
@@ -121,19 +149,19 @@
                 <&mouse_scroll SCRL_LEFT SCRL_RIGHT>;
         };
 
+        //layer_3
         Win-Function_Layer {
             bindings = <
-&kp LC(A)       &kp LC(X)     &kp LC(C)    &kp LC(V)  &kp LC(LS(V))    &kp LESS_THAN         &kp GREATER_THAN       &kp CARET         &kp PERCENT        &kp DOLLAR
-&kp TAB         &kp LEFT_GUI  &kp LS(TAB)  &mkp MB1   &mkp MB2         &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN       &kp AMPERSAND      &kp DOUBLE_QUOTES
-&kp LEFT_SHIFT  &trans        &trans       &trans     &mkp MB3         &trans                &kp NON_US_BACKSLASH   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp EXCLAMATION    &kp QUESTION  &kp SINGLE_QUOTE
-&kp LCTRL       &trans                                &trans           &trans                &kp BACKSPACE          &kp ENTER         &trans             &trans             &trans        &kp HASH
+&kq LC(Q)       &kp LC(W)     &kp LC(E)      &kp LC(R)   &kp LC(T)                                         &kp LC(Y)  &kp LC(U)  &kp LC(I)        &kp LG(D)      &kp LG(L)
+&kp LC(A)       &kp LC(S)     &kp LC(D)      &kp LC(F)   &kp LC(G)                                         &kp LC(H)  &kp LC(J)  &kp LC(MINUS)    &kp LC(PLUS)   &kp ENTER
+&kp LC(Z)       &kp LC(X)     &kp LC(C)      &kp LC(V)   &kp LC(B)      &trans      &kp NON_US_BACKSLASH   &kp LC(N)  &kp LC(M)  &none            &kp LG(LS(S))  &kp LC(SLASH)
+&none           &none                                    &none          &none       &none                  &kp trans  &none      &none            &none          &none
             >;
 
-            sensor-bindings =
-                <&mouse_scroll SCRL_LEFT SCRL_RIGHT>,
-                <&mouse_scroll SCRL_LEFT SCRL_RIGHT>;
+            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
         };
 
+        //layer_4
         Mac-Common_Layer {
             bindings = <
 &kp ESCAPE      &trans        &trans       &kp LG(UP_ARROW)    &trans                 &kp LG(W)    &kp LG(LEFT_ARROW)  &mkp MB3         &kp LG(RIGHT_ARROW)  &kp HOME
@@ -147,12 +175,13 @@
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
+        //layer_5
         Win-Common_Layer {
             bindings = <
-&kp ESCAPE      &trans        &trans       &kp LG(UP_ARROW)    &trans                 &kp LC(W)        &kp LA(LEFT_ARROW)  &mkp MB3           &kp LA(RIGHT_ARROW)  &kp HOME
-&kp TAB         &kp LEFT_ALT  &kp LS(TAB)  &kp LG(LEFT_ARROW)  &kp LG(RIGHT_ARROW)    &kp LC(PAGE_UP)  &mkp MB1            &kp UP_ARROW       &mkp MB2             &kp PAGE_UP
-&kp LEFT_SHIFT  &trans        &trans       &kp LG(DOWN_ARROW)  &trans                 &trans           &kp LC(T)           &kp LC(PAGE_DOWN)  &kp LEFT_ARROW       &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp PAGE_DOWN
-&kp LCTRL       &trans                                         &trans                 &trans           &trans              &trans             &trans               &trans          &trans           &kp END
+&kp ESCAPE      &trans        &trans          &kp UP_ARROW    &trans                                               &kp LC(W)          &kp LA(LEFT_ARROW)  &mkp MB3         &kp LA(RIGHT_ARROW)  &kp HOME
+&kp TAB         &trans        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW                                      &kp LC(PAGE_UP)    &mkp MB1            &kp UP_ARROW     &mkp MB2             &kp PAGE_UP
+&kp LEFT_SHIFT  &trans        &trans          &trans          &trans           &trans           &kp LC(T)          &kp LC(PAGE_DOWN)  &kp LEFT_ARROW      &kp DOWN_ARROW   &kp RIGHT_ARROW      &kp PAGE_DOWN
+&kp LCTRL       &trans                                        &trans           &trans           &kp DEL            &trans             &trans              &trans           &trans               &trans
             >;
 
             sensor-bindings =
@@ -160,26 +189,32 @@
                 <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
+        //layer_6
         Auto-MOUSE_Layer {
             bindings = <
-&trans  &trans    &trans    &trans    &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans    &trans  &trans  &trans  &trans  &trans
-&trans  &trans    &trans    &trans    &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans                        &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                      &mkp MB2  &mkp MB3  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans                      &mkp MB1  &trans    &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans    &trans    &trans  &trans    &trans    &trans  &trans  &trans
+&trans  &trans                  &trans    &trans    &trans  &trans    &trans    &trans  &trans  &trans
             >;
         };
 
+        //layer_7
         Num_Layer {
             bindings = <
-&kp F1   &kp F2   &kp F3                  &kp F4  &kp F5                     &kp PLUS   &kp MINUS      &kp N7        &kp N8     &kp N9
-&kp F6   &kp F7   &kp F8                  &kp F9  &kp F10                    &kp EQUAL  &kp COLON      &kp N4        &kp N5     &kp N6
-&kp F11  &kp F12  &kp LG(LS(LEFT_ARROW))  &trans  &kp LG(LS(RIGHT_ARROW))    &trans     &kp AMPERSAND  &kp ASTERISK  &kp SLASH  &kp N1  &kp N2         &kp N3
-&trans   &trans                                   &trans                     &trans     &kp BACKSPACE  &kp RET       &trans     &trans  &kp AMPERSAND  &kp BSPC
+&kp EXCL   &kp QMARK  &kp N7  &kp N8  &kp N9                            &kp DQT    &kp SQT      &kp LBRC   &kp RBRC  &kp MINUS
+&kp GRAVE  &kp POUND   &kp N4  &kp N5  &kp N6                           &kp UNDER  &kp EQUAL    &kp LBKT   &kp RBKT  &kp CARET
+&kp PRCNT  &kp N0     &kp N1  &kp N2  &kp N3    &trans   &kp AMPERSAND  &kp SEMI   &kp COLON    &kp LPAR   &kp RPAR  &kp SLASH
+&none      &none                      &trans    &trans   &trans         &trans     &trans       &trans     &kp BSLH  &kp AT 
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
+            sensor-bindings =
+                <&mouse_scroll SCRL_UP SCRL_DOWN>,
+                <&mouse_scroll SCRL_UP SCRL_DOWN>;
+
         };
 
+        //layer_8
         Setting_Layer {
             bindings = <
 &trans      &trans       &trans  &trans  &trans    &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
