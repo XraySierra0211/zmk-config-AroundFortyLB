@@ -183,7 +183,7 @@
 &kp ESCAPE      &trans        &trans          &kp UP_ARROW    &trans                                               &kp LC(W)          &kp LA(LEFT_ARROW)  &mkp MB3         &kp LA(RIGHT_ARROW)  &kp HOME
 &kp TAB         &trans        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW                                      &kp LC(PAGE_UP)    &mkp MB1            &kp UP_ARROW     &mkp MB2             &kp PAGE_UP
 &kp LEFT_SHIFT  &trans        &trans          &trans          &trans           &trans           &kp LC(T)          &kp LC(PAGE_DOWN)  &kp LEFT_ARROW      &kp DOWN_ARROW   &kp RIGHT_ARROW      &kp PAGE_DOWN
-&kp LCTRL       &trans                                        &trans           &trans           &kp DEL            &trans             &trans              &trans           &trans               &trans
+&kp LCTRL       &trans                                        &trans           &trans           &kp DEL            &kp LA(ENTER)      &trans              &trans           &trans               &trans
             >;
 
             sensor-bindings =
@@ -204,10 +204,10 @@
         //layer_7
         Num_Layer {
             bindings = <
-&kp EXCL   &kp QMARK  &kp N7  &kp N8  &kp N9                            &kp JP_DQUOTE      &kp JP_QUOTE    &kp JP_LBRACE     &kp JP_RBRACE    &kp MINUS
-&kp GRAVE  &kp POUND   &kp N4  &kp N5  &kp N6                           &kp JP_UNDERSCORE  &kp JP_EQUAL    &kp JP_LBRACKET   &kp JP_LBRACKET  &kp JP_CARET
-&kp PRCNT  &kp N0     &kp N1  &kp N2  &kp N3    &trans   &kp AMPERSAND  &kp SEMI           &kp JP_COLON    &kp JP_LPAREN     &kp JP_RPAREN    &kp SLASH
-&none      &none                      &trans    &trans   &trans         &trans             &trans          &trans            &kp JP_PIPE      &kp JP_AT 
+&kp EXCL          &kp QMARK   &kp N7  &kp N8  &kp N9                            &kp JP_DQUOTE      &kp JP_QUOTE    &kp JP_LBRACE     &kp JP_RBRACE    &kp MINUS
+&kp JP_BACKQUOTE  &kp POUND   &kp N4  &kp N5  &kp N6                            &kp JP_UNDERSCORE  &kp JP_EQUAL    &kp JP_LBRACKET   &kp JP_LBRACKET  &kp JP_CARET
+&kp PRCNT         &kp N0      &kp N1  &kp N2  &kp N3    &trans   &kp AMPERSAND  &kp SEMI           &kp JP_COLON    &kp JP_LPAREN     &kp JP_RPAREN    &kp SLASH
+&none             &none                       &trans    &trans   &trans         &trans             &trans          &trans            &kp JP_PIPE      &kp JP_AT 
             >;
 
             sensor-bindings =
