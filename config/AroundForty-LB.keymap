@@ -6,8 +6,8 @@
 #undef ZMK_POINTING_DEFAULT_SCRL_VAL
 #undef ZMK_POINTING_DEFAULT_MOVE_VAL
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 2200
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 30
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 2500
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 10
 #define MOUSE 6
 
 // OS設定を日本語キーボードのまま使用するための変換定義
@@ -205,7 +205,7 @@
         Num_Layer {
             bindings = <
 &kp EXCL          &kp QMARK   &kp N7  &kp N8  &kp N9                            &kp JP_DQUOTE      &kp JP_QUOTE    &kp JP_LBRACE     &kp JP_RBRACE    &kp MINUS
-&kp JP_BACKQUOTE  &kp POUND   &kp N4  &kp N5  &kp N6                            &kp JP_UNDERSCORE  &kp JP_EQUAL    &kp JP_LBRACKET   &kp JP_LBRACKET  &kp JP_CARET
+&kp JP_BACKQUOTE  &kp POUND   &kp N4  &kp N5  &kp N6                            &kp JP_UNDERSCORE  &kp JP_EQUAL    &kp JP_LBRACKET   &kp JP_RBRACKET  &kp JP_CARET
 &kp PRCNT         &kp N0      &kp N1  &kp N2  &kp N3    &trans   &kp AMPERSAND  &kp SEMI           &kp JP_COLON    &kp JP_LPAREN     &kp JP_RPAREN    &kp SLASH
 &none             &none                       &trans    &trans   &trans         &trans             &trans          &trans            &kp JP_PIPE      &kp JP_AT 
             >;
